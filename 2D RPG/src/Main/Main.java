@@ -19,6 +19,7 @@ public class Main {
     frame.setResizable(false);
     frame.setVisible(true);
     InventoryPanel invPanel = new InventoryPanel();
-    //my mom
+    
+    System.out.println("please help me code pls github i plead");
   }
 }
