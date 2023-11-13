@@ -3,9 +3,11 @@ package Main;
 import Mechanics.Health;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,26 +15,44 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class Panel extends JPanel implements Runnable, ActionListener {
 	
   final int P_WIDTH = 700;
   final int P_HEIGHT = 600;
   int hp;
+  
+  String opt1Text = "Option 1";
+  String opt2Text = "Option 2";
+  String opt3Text = "Option 3";
+  String opt4Text = "Option 4";
+  String sText = "Hello, this is the chimney of food ";
+  
   JButton[] panelButtons;
   JButton doAction;
   JButton option1;
   JButton option2;
   JButton option3;
   JButton option4;
+  
   JProgressBar[] bars = new JProgressBar[2];
   JProgressBar health;
   JProgressBar hunger;
+  
   JLabel[] labels = new JLabel[3];
   JLabel healthLabel;
   JLabel hungerLabel;
   JLabel title;
-  JPanel title_panel = new JPanel();
+  JTextArea storyText = new JTextArea();
+  
+  JScrollPane scrollPane = new JScrollPane(storyText);
+  
+  JPanel title_panel;
+  JPanel optionButtons;
+  JPanel story;
+  
   Thread gameLoop;
   
   public Panel() {
@@ -41,6 +61,32 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     
     setPreferredSize(new Dimension(700, 600));
     setBackground(Color.black);
+    
+    //panels
+    title_panel = new JPanel();
+    title_panel.setBackground(new Color(87, 85, 85));
+    title_panel.setBounds(P_WIDTH*1/2-150,15,300,50);
+    
+    optionButtons = new JPanel();
+    optionButtons.setBackground(new Color(87, 85, 85));
+    optionButtons.setBounds(title_panel.getX()-150,title_panel.getY()+title_panel.getHeight()+175,600,250);
+    optionButtons.setLayout(new GridLayout(4,1,5,5));
+    
+    story = new JPanel();
+    story.setBackground(new Color(138, 90, 73));
+    story.setLayout(new FlowLayout());
+    story.setBounds(title_panel.getX()-150,title_panel.getY()+title_panel.getHeight()+25,600,125 );
+    //adds text to story panel
+    storyText.setLineWrap(true);
+    storyText.setBackground(new Color(138, 90, 73));
+    storyText.setText(sText);
+    storyText.setEditable(false);
+    storyText.setBounds(title_panel.getX()-150,title_panel.getY()+title_panel.getHeight()+25,600,125);
+    storyText.setFont(new Font("Roboto", Font.BOLD, 15));
+    storyText.setWrapStyleWord(true);
+    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    story.add(storyText);
+    
     
     //bars
     health = new JProgressBar();
@@ -68,10 +114,10 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     panelButtons = new JButton[5];
     
     doAction = new JButton();
-    option1 = new JButton();
-    option2 = new JButton();
-    option3 = new JButton();
-    option4 = new JButton();
+    option1 = new JButton(opt1Text);
+    option2 = new JButton(opt2Text);
+    option3 = new JButton(opt3Text);
+    option4 = new JButton(opt4Text);
     
     panelButtons[0] = doAction;
     panelButtons[1] = option1;
@@ -79,18 +125,26 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     panelButtons[3] = option3;
     panelButtons[4] = option4;
     
+    //add panels
+    this.add(title_panel);
+    this.add(optionButtons);
+    this.add(story);
+    
     //for Labels
     for (int j = 0; j < 3; j++) {
       this.labels[j].setSize(100, 100);
       this.labels[j].setForeground(Color.white);
       this.labels[j].setBackground(Color.LIGHT_GRAY);
-      this.labels[j].setFont(new Font("Roboto", 1, 15));
+      this.labels[j].setFont(new Font("Roboto", Font.PLAIN, 15));
       add(this.labels[j]);
     } 
    
     this.labels[0].setBounds(this.bars[0].getX() - 80, this.bars[0].getY() - 38, this.labels[2].getWidth(), this.labels[2].getHeight());
     this.labels[1].setBounds(this.bars[1].getX() - 80, this.bars[1].getY() - 38, this.labels[2].getWidth(), this.labels[2].getHeight());
     this.labels[2].setBounds(300, 300, this.labels[2].getWidth(), this.labels[2].getHeight());
+    labels[2].setFont(new Font("Roboto", Font.BOLD,30));
+    this.remove(labels[2]);
+    title_panel.add(labels[2]);
     
     //for bars
     for (int i = 0; i < 2; i++) {
@@ -102,10 +156,16 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     for (int k = 0; k < 5; k++) {
       this.panelButtons[k].setFocusable(false);
       this.panelButtons[k].setSize(50, 100);
-      this.panelButtons[k].setFont(new Font("Roboto", 1, 15));
-      add(this.panelButtons[k]);
+      this.panelButtons[k].setBackground(new Color(102, 85, 77));
+      this.panelButtons[k].setForeground(Color.white);
+      this.panelButtons[k].setFont(new Font("Roboto", Font.PLAIN, 15));
+      if(k==0) {
+      } else {
+    	  optionButtons.add(panelButtons[k]);
+      }
+      
     } 
-    
+     
     setLayout((LayoutManager)null);
   }
   
