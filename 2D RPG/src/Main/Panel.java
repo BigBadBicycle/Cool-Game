@@ -12,7 +12,10 @@ import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -39,23 +42,27 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   JButton option2;
   JButton option3;
   JButton option4;
+  JButton inventoryB;
   
   JProgressBar[] bars = new JProgressBar[2];
   JProgressBar health;
   JProgressBar hunger;
   
-  JLabel[] labels = new JLabel[3];
+  JLabel[] labels = new JLabel[4];
   JLabel healthLabel;
   JLabel hungerLabel;
   JLabel title;
+  JLabel itemShow;
   JTextArea storyText = new JTextArea();
   
   JScrollPane scrollPane = new JScrollPane(storyText);
   Image testImage;
+  BufferedImage myPicture = ImageIO.read(new File("images.jpg"));
   
   JPanel title_panel;
   JPanel optionButtons;
   JPanel story;
+  JPanel itemDisplay;
   
   Thread gameLoop;
   
@@ -63,7 +70,6 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     Health HClass = new Health();
     
     //images
-    testImage = new ImageIcon("C:/Users/261110/git/Cool-Game/2D%20RPG/src/Assets/test.jpg").getImage();
 
     
     
@@ -74,6 +80,10 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     title_panel = new JPanel();
     title_panel.setBackground(new Color(87, 85, 85));
     title_panel.setBounds(P_WIDTH*1/2-150,15,300,50);
+    
+    itemDisplay = new JPanel();
+    itemDisplay.setBackground(new Color(241, 245, 132));
+    itemDisplay.setBounds(P_WIDTH-125,P_HEIGHT-90,80,80);
     
     optionButtons = new JPanel();
     optionButtons.setBackground(new Color(87, 85, 85));
@@ -115,9 +125,12 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     healthLabel = new JLabel("Health");
     hungerLabel = new JLabel("Hunger");
     title = new JLabel("Story");
+    itemShow = new JLabel();
+    
     labels[0] = this.healthLabel;
     labels[1] = this.hungerLabel;
     labels[2] = this.title;
+    labels[3] = this.itemShow;
     
     //button
     panelButtons = new JButton[5];
@@ -138,9 +151,10 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     this.add(title_panel);
     this.add(optionButtons);
     this.add(story);
+    this.add(itemDisplay);
     
     //for Labels
-    for (int j = 0; j < 3; j++) {
+    for (int j = 0; j < 4; j++) {
       this.labels[j].setSize(100, 100);
       this.labels[j].setForeground(Color.white);
       this.labels[j].setBackground(Color.LIGHT_GRAY);
@@ -154,6 +168,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     labels[2].setFont(new Font("Roboto", Font.BOLD,30));
     this.remove(labels[2]);
     title_panel.add(labels[2]);
+    labels[3].setBounds(itemDisplay.getX(), itemDisplay.getY(), 80,80);
     
     //for bars
     for (int i = 0; i < 2; i++) {
@@ -203,4 +218,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   }
   
   public void actionPerformed(ActionEvent e) {}
-}
+  
+
+	}
+	
