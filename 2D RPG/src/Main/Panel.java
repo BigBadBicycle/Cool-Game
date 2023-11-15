@@ -8,9 +8,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -48,6 +51,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   JTextArea storyText = new JTextArea();
   
   JScrollPane scrollPane = new JScrollPane(storyText);
+  Image testImage;
   
   JPanel title_panel;
   JPanel optionButtons;
@@ -57,6 +61,10 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   
   public Panel() {
     Health HClass = new Health();
+    
+    //images
+    testImage = new ImageIcon("C:/Users/261110/git/Cool-Game/2D%20RPG/src/Assets/test.jpg").getImage();
+
     
     
     setPreferredSize(new Dimension(700, 600));
@@ -79,6 +87,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     //adds text to story panel
     storyText.setLineWrap(true);
     storyText.setBackground(new Color(138, 90, 73));
+    storyText.setForeground(Color.white);
     storyText.setText(sText);
     storyText.setEditable(false);
     storyText.setBounds(title_panel.getX()-150,title_panel.getY()+title_panel.getHeight()+25,600,125);
@@ -165,7 +174,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
       }
       
     } 
-     
+     startGameLoop();
     setLayout((LayoutManager)null);
   }
   
@@ -175,7 +184,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   
   public void run() {
     while (this.gameLoop != null) {
-    	
+    	System.out.println("Gameloop is running");
       update();
       repaint();
       
@@ -189,6 +198,8 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D)g;
+    g2.drawImage(testImage, 0, 0 , null);
+   
   }
   
   public void actionPerformed(ActionEvent e) {}
