@@ -2,6 +2,7 @@ package Main;
 
 import Mechanics.Health;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -56,8 +57,6 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   JTextArea storyText = new JTextArea();
   
   JScrollPane scrollPane = new JScrollPane(storyText);
-  Image testImage;
-  BufferedImage myPicture = ImageIO.read(new File("images.jpg"));
   
   JPanel title_panel;
   JPanel optionButtons;
@@ -70,7 +69,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     Health HClass = new Health();
     
     //images
-
+    ImageIcon testImage = new ImageIcon("apple.png");
     
     
     setPreferredSize(new Dimension(700, 600));
@@ -169,6 +168,9 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     this.remove(labels[2]);
     title_panel.add(labels[2]);
     labels[3].setBounds(itemDisplay.getX(), itemDisplay.getY(), 80,80);
+    labels[3].setIcon(testImage);
+    labels[3].setHorizontalTextPosition(JLabel.CENTER);
+    labels[3].setVerticalTextPosition(JLabel.TOP);
     
     //for bars
     for (int i = 0; i < 2; i++) {
@@ -213,7 +215,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D)g;
-    g2.drawImage(testImage, 0, 0 , null);
+ 
    
   }
   
