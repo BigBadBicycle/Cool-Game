@@ -1,29 +1,10 @@
 package Main;
 
 import Mechanics.Health;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.LayoutManager;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
 public class Panel extends JPanel implements Runnable, ActionListener {
 	
@@ -56,6 +37,8 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   JLabel itemShow;
   JTextArea storyText = new JTextArea();
   
+  ImageIcon image;
+  
   JScrollPane scrollPane = new JScrollPane(storyText);
   
   JPanel title_panel;
@@ -69,7 +52,12 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     Health HClass = new Health();
     
     //images
-    ImageIcon testImage = new ImageIcon("apple.png");
+    try {
+    	image = new ImageIcon("apple.png");
+    	System.out.println(image);
+    } catch(Exception e) {
+    	System.out.println("Error finding the image");
+    }
     
     
     setPreferredSize(new Dimension(700, 600));
@@ -158,19 +146,22 @@ public class Panel extends JPanel implements Runnable, ActionListener {
       this.labels[j].setForeground(Color.white);
       this.labels[j].setBackground(Color.LIGHT_GRAY);
       this.labels[j].setFont(new Font("Roboto", Font.PLAIN, 15));
-      add(this.labels[j]);
-    } 
+      if(j==3) {
+    	  labels[3].setIcon(image);
+    	  labels[3].setBounds(itemDisplay.getX(), itemDisplay.getY(), 80,80);
+    	  itemDisplay.add(labels[3]);
+      }	else {
+      this.add(this.labels[j]);
+      } 
+    }
    
     this.labels[0].setBounds(this.bars[0].getX() - 80, this.bars[0].getY() - 38, this.labels[2].getWidth(), this.labels[2].getHeight());
     this.labels[1].setBounds(this.bars[1].getX() - 80, this.bars[1].getY() - 38, this.labels[2].getWidth(), this.labels[2].getHeight());
     this.labels[2].setBounds(300, 300, this.labels[2].getWidth(), this.labels[2].getHeight());
     labels[2].setFont(new Font("Roboto", Font.BOLD,30));
     this.remove(labels[2]);
+    this.remove(labels[3]);
     title_panel.add(labels[2]);
-    labels[3].setBounds(itemDisplay.getX(), itemDisplay.getY(), 80,80);
-    labels[3].setIcon(testImage);
-    labels[3].setHorizontalTextPosition(JLabel.CENTER);
-    labels[3].setVerticalTextPosition(JLabel.TOP);
     
     //for bars
     for (int i = 0; i < 2; i++) {
@@ -220,6 +211,8 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   }
   
   public void actionPerformed(ActionEvent e) {}
+
+
   
 
 	}

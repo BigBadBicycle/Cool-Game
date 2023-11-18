@@ -7,9 +7,10 @@ public class Health {
   public Integer HP = this.defaultHP;
   public boolean canHealUp;
   public boolean isDead;
+  
+  
+  
   public void canHeal() {
-	  
-	  
     if (this.HP.intValue() > 0 && this.HP.intValue() < 100) {
     	
       this.canHealUp = true;
@@ -25,6 +26,13 @@ public class Health {
       this.canHealUp = false;
       this.isDead = false;
       
-    } 
+    }
   }
+  
+  public void Heal(boolean canHeal) {
+	  if(canHeal==true) {
+		  
+	  }
+  }
+  
 }
