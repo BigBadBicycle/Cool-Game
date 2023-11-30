@@ -37,14 +37,12 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   JLabel itemShow;
   JTextArea storyText = new JTextArea();
   
-  ImageIcon image;
-  
   JScrollPane scrollPane = new JScrollPane(storyText);
   
   JPanel title_panel;
   JPanel optionButtons;
   JPanel story;
-  JPanel itemDisplay;
+  MainInventoryPanel itemDisplay;
   
   Thread gameLoop;
   
@@ -52,23 +50,16 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     Health HClass = new Health();
     
     //images
-    try {
-    	image = new ImageIcon("apple.png");
-    	System.out.println(image);
-    } catch(Exception e) {
-    	System.out.println("Error finding the image");
-    }
-    
-    
-    setPreferredSize(new Dimension(700, 600));
-    setBackground(Color.black);
     
     //panels
     title_panel = new JPanel();
     title_panel.setBackground(new Color(87, 85, 85));
     title_panel.setBounds(P_WIDTH*1/2-150,15,300,50);
     
-    itemDisplay = new JPanel();
+    this.setPreferredSize(new Dimension(P_WIDTH, P_HEIGHT));
+    this.setBackground(Color.black);
+    
+    itemDisplay = new MainInventoryPanel();
     itemDisplay.setBackground(new Color(241, 245, 132));
     itemDisplay.setBounds(P_WIDTH-125,P_HEIGHT-90,80,80);
     
@@ -117,7 +108,6 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     labels[0] = this.healthLabel;
     labels[1] = this.hungerLabel;
     labels[2] = this.title;
-    labels[3] = this.itemShow;
     
     //button
     panelButtons = new JButton[5];
@@ -141,26 +131,20 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     this.add(itemDisplay);
     
     //for Labels
-    for (int j = 0; j < 4; j++) {
+    for (int j = 0; j < 3; j++) {
       this.labels[j].setSize(100, 100);
       this.labels[j].setForeground(Color.white);
       this.labels[j].setBackground(Color.LIGHT_GRAY);
       this.labels[j].setFont(new Font("Roboto", Font.PLAIN, 15));
-      if(j==3) {
-    	  labels[3].setIcon(image);
-    	  labels[3].setBounds(itemDisplay.getX(), itemDisplay.getY(), 80,80);
-    	  itemDisplay.add(labels[3]);
-      }	else {
-      this.add(this.labels[j]);
+      this.add(labels[j]);
       } 
-    }
+    
    
     this.labels[0].setBounds(this.bars[0].getX() - 80, this.bars[0].getY() - 38, this.labels[2].getWidth(), this.labels[2].getHeight());
     this.labels[1].setBounds(this.bars[1].getX() - 80, this.bars[1].getY() - 38, this.labels[2].getWidth(), this.labels[2].getHeight());
     this.labels[2].setBounds(300, 300, this.labels[2].getWidth(), this.labels[2].getHeight());
     labels[2].setFont(new Font("Roboto", Font.BOLD,30));
     this.remove(labels[2]);
-    this.remove(labels[3]);
     title_panel.add(labels[2]);
     
     //for bars
@@ -183,7 +167,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
       
     } 
      startGameLoop();
-    setLayout((LayoutManager)null);
+    this.setLayout((LayoutManager)null);
   }
   
   public void startGameLoop() {

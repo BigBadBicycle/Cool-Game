@@ -1,5 +1,7 @@
 package Inventory_System;
 
-public class InventoryPanel {
+import javax.swing.*;
 
+public class InventoryPanel extends JPanel{
+	
 }

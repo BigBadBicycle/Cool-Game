@@ -11,7 +11,7 @@ public class Main {
     JFrame frame = new JFrame();
     frame.setDefaultCloseOperation(3);
     Menu background = new Menu();
-    frame.add((Component)background);
+    frame.add(background);
     frame.pack();
     frame.setTitle("RPG Thing");
     frame.setLocationRelativeTo((Component)null);
@@ -19,6 +19,7 @@ public class Main {
     frame.setResizable(false);
     frame.setVisible(true);
     InventoryPanel invPanel = new InventoryPanel();
+    
      
   }
 }
