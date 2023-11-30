@@ -189,10 +189,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-    Graphics2D g2 = (Graphics2D)g;
-    g2.setColor(Color.RED);
-    g2.set
-    g2.drawRect(itemDisplay.getX(),itemDisplay.getY(),10,10);
+   
    
   }
   
