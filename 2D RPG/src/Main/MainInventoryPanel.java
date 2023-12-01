@@ -14,7 +14,7 @@ public class MainInventoryPanel extends JPanel{
 	 
 	 MainInventoryPanel(){
 	  
-	  image = new ImageIcon("C:/Users/Santiago/eclipse-workspace/testt/src/assets/apple.png").getImage();
+		 image = new ImageIcon(this.getClass().getResource("/apple.png")).getImage();
 	  this.setPreferredSize(new Dimension(500,500));
 	 }
 	 
