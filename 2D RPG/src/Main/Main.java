@@ -8,17 +8,16 @@ import javax.swing.JFrame;
 
 public class Main {
   public static void main(String[] args) {
-    JFrame frame = new JFrame();
-    frame.setDefaultCloseOperation(3);
+    JFrame mainFrame = new JFrame();
+    mainFrame.setDefaultCloseOperation(3);
     Menu background = new Menu();
-    frame.add(background);
-    frame.pack();
-    frame.setTitle("RPG Thing");
-    frame.setLocationRelativeTo((Component)null);
-    frame.setLayout((LayoutManager)null);
-    frame.setResizable(false);
-    frame.setVisible(true);
-    InventoryPanel invPanel = new InventoryPanel();
+    mainFrame.add(background);
+    mainFrame.pack();
+    mainFrame.setTitle("RPG Thing");
+    mainFrame.setLocationRelativeTo((Component)null);
+    mainFrame.setLayout((LayoutManager)null);
+    mainFrame.setResizable(false);
+    mainFrame.setVisible(true);
     
      
   }

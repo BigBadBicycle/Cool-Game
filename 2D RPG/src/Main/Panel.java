@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import Inventory_System.InventoryPanel;
+
 public class Panel extends JPanel implements Runnable, ActionListener {
 	
   final int P_WIDTH = 700;
@@ -42,7 +44,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   JPanel title_panel;
   JPanel optionButtons;
   JPanel story;
-  MainInventoryPanel itemDisplay;
+  InventoryProjectorClass itemDisplay;
   
   Thread gameLoop;
   
@@ -59,7 +61,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     this.setPreferredSize(new Dimension(P_WIDTH, P_HEIGHT));
     this.setBackground(Color.black);
     
-    itemDisplay = new MainInventoryPanel();
+    itemDisplay = new InventoryProjectorClass();
     itemDisplay.setBackground(new Color(241, 245, 132));
     itemDisplay.setBounds(P_WIDTH-125,P_HEIGHT-90,80,80);
     
@@ -110,9 +112,10 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     labels[2] = this.title;
     
     //button
-    panelButtons = new JButton[5];
+    panelButtons = new JButton[6];
     
-    doAction = new JButton();
+    doAction = new JButton("Action");
+    inventoryB = new JButton("Inventory");
     option1 = new JButton(opt1Text);
     option2 = new JButton(opt2Text);
     option3 = new JButton(opt3Text);
@@ -123,6 +126,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     panelButtons[2] = option2;
     panelButtons[3] = option3;
     panelButtons[4] = option4;
+    panelButtons[5] = inventoryB;
     
     //add panels
     this.add(title_panel);
@@ -154,18 +158,26 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     } 
     
     //for Buttons
-    for (int k = 0; k < 5; k++) {
+    for (int k = 0; k < 6; k++) {
       this.panelButtons[k].setFocusable(false);
       this.panelButtons[k].setSize(50, 100);
       this.panelButtons[k].setBackground(new Color(102, 85, 77));
       this.panelButtons[k].setForeground(Color.white);
       this.panelButtons[k].setFont(new Font("Roboto", Font.PLAIN, 15));
-      if(k==0) {
+      this.panelButtons[k].addActionListener(this);
+      if(k==0 || k==5) {
+    	  this.add(panelButtons[k]);
       } else {
     	  optionButtons.add(panelButtons[k]);
       }
       
     } 
+    
+    panelButtons[0].setBounds(15,title_panel.getY(),panelButtons[0]
+    		.getHeight(),panelButtons[0].getWidth());
+    panelButtons[5].setBounds(P_WIDTH-panelButtons[5].getWidth()-65,title_panel.getY(),panelButtons[5]
+    		.getHeight(),panelButtons[5].getWidth());
+   
      startGameLoop();
     this.setLayout((LayoutManager)null);
   }
@@ -187,14 +199,12 @@ public class Panel extends JPanel implements Runnable, ActionListener {
 	  
   }
   
-  public void paintComponent(Graphics g) {
-    super.paintComponent(g);
-   
-   
+  public void actionPerformed(ActionEvent e) {
+	  if(e.getSource()==inventoryB) {
+			new InventoryPanel();
+		}
   }
-  
-  public void actionPerformed(ActionEvent e) {}
-
+  			
 
   
 
