@@ -8,13 +8,14 @@ import java.awt.Image;
 import javax.swing.*;
 
 
-public class MainInventoryPanel extends JPanel{
+public class InventoryProjectorClass extends JPanel{
 
 	 Image image;
 	 
-	 MainInventoryPanel(){
+	 InventoryProjectorClass(){
 	  
-	  image = new ImageIcon("C:/Users/Santiago/eclipse-workspace/testt/src/assets/apple.png").getImage();
+		 image = new ImageIcon(this.getClass().getResource("/betterBread.png")).getImage();
+		 
 	  this.setPreferredSize(new Dimension(500,500));
 	 }
 	 
