@@ -50,7 +50,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     Health HClass = new Health();
     
     //images
-    
+
     //panels
     title_panel = new JPanel();
     title_panel.setBackground(new Color(87, 85, 85));
