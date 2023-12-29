@@ -15,8 +15,10 @@ public class InventoryProjectorClass extends JPanel{
 	 InventoryProjectorClass(){
 	  
 		 image = new ImageIcon(this.getClass().getResource("/betterBread.png")).getImage();
+		 System.out.println(image.getHeight(null));
+		 System.out.println(image.getWidth(null));
 		 
-	  this.setPreferredSize(new Dimension(500,500));
+	  this.setPreferredSize(new Dimension(100,80 ));
 	 }
 	 
 	 public void paint(Graphics g) {
