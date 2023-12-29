@@ -4,6 +4,7 @@ import Inventory_System.Item;
 import Mechanics.Hunger;
 
 public class Food extends Item{
+	int hungerReplenish;
 	
 	
 	 Food(){
