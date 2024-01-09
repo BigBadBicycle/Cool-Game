@@ -1,15 +1,22 @@
 package Inventory_System;
-import javax.swing.*;
+
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 
 public class Item {
-	protected boolean canUse;
-	protected int size = 16;
-	ImageIcon itempicture;
-	
-	
+	Image image;
+	int size = 10;
+	boolean canUse;
 
-	protected Item(){
-		
+	public Image assignTexture(String path) {
+		return this.image = new ImageIcon(this.getClass().getResource(path)).getImage();
 	}
-
+	
+	public  boolean canUse(boolean f) {
+		return this.canUse = f;
+		
+	
+	
+	}
 }

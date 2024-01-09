@@ -1,6 +1,7 @@
 package Inventory_System;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,7 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	JButton back;
 	
 	int page = 0;
+	addItems item;
 	
 	JLabel slotNumber;
 	
@@ -44,16 +46,17 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	Itemslots slot23;
 	Itemslots slot24;
 	
+	@SuppressWarnings("deprecation")
 	public InventoryPanel(){
 		
 		
 		
-		//this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(400,400);
 		this.getContentPane().setBackground(Color.BLACK);
 		
-		//slots
+	//slots
 		invSlots = new Itemslots[24];
 		invSlots[0] = slot1;
 		invSlots[1] = slot2;
@@ -80,7 +83,7 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		invSlots[22] = slot23;
 		invSlots[23] = slot24;
 		
-		//Buttons
+	//Buttons
 		
 		invButtons = new JButton[2];
 		
@@ -92,24 +95,54 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		
 	//for loops
 		
-		//item slots
+	//item slots
 		
-		for(int i = 0; i<14; i++) {
+		for(int i = 0; i<24; i++) {
 			invSlots[i] = new Itemslots();
 			invSlots[i].setBounds(200-55,200-60,100,80);
 			invSlots[i].setBackground(Color.WHITE);
-			this.add(invSlots[i]);
+			this.add(invSlots[page]);
 		}
 		
-		//buttons
+		item = new addItems();
+		invSlots[0].image = item.bread.image;
+		
+	//buttons
 		for(int j = 0; j<2; j++) {
 			invButtons[j].setFocusable(false);
 			invButtons[j].setSize(50,50);
+			invButtons[j].setFont(new Font("Roboto", Font.PLAIN, 7));
 			this.add(invButtons[j]);
 		}
 		
-		invButtons[0].setBounds(100,50,invButtons[0].getWidth(), invButtons[0].getHeight());
-		invButtons[1].setBounds(50,50,invButtons[1].getWidth(), invButtons[1].getHeight());
+		invButtons[0].setBounds(250,152,invButtons[0].getWidth(), invButtons[0].getHeight());
+		invButtons[1].setBounds(90,152,invButtons[1].getWidth(), invButtons[1].getHeight());
+		
+	//Button Functions that make them work or whatever
+		invButtons[0].addActionListener(e ->{
+			
+		if(page>=23) {
+			invButtons[0].disable();
+		} else {
+			this.remove(invSlots[page]);
+			page = page+1;
+			this.add(invSlots[page]);
+			System.out.println("next, Page: "+page);
+			this.update(getGraphics());
+			}
+		});
+		
+		invButtons[1].addActionListener(e ->{
+			if(page==0) {
+				invButtons[1].disable();
+			} else {
+				this.remove(invSlots[page]);
+				page = page-1;
+				this.add(invSlots[page]);
+				System.out.println("Back, Page: "+page);
+				this.update(getGraphics());
+				}
+		});
 		
 		this.setLayout(null);
 		this.setVisible(true);

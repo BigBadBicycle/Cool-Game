@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 public class Main {
   public static void main(String[] args) {
-   /* JFrame mainFrame = new JFrame();
+    /*JFrame mainFrame = new JFrame();
     mainFrame.setDefaultCloseOperation(3);
     Menu background = new Menu();
     mainFrame.add(background);
@@ -19,7 +19,7 @@ public class Main {
     mainFrame.setResizable(false);
     mainFrame.setVisible(true); */
     
-    new InventoryPanel();
+   new InventoryPanel();
     
      
   }
