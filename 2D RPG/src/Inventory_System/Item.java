@@ -8,15 +8,21 @@ public class Item {
 	Image image;
 	int size = 10;
 	boolean canUse;
+	boolean isFood;
 
-	public Image assignTexture(String path) {
-		return this.image = new ImageIcon(this.getClass().getResource(path)).getImage();
+	public Item assignTexture(String path) {
+		 this.image = new ImageIcon(this.getClass().getResource(path)).getImage();
+		 return this;
 	}
 	
-	public  boolean canUse(boolean f) {
-		return this.canUse = f;
-		
-	
-	
+	public Item canUse() {
+		this.canUse = true;
+		return this;
 	}
+	
+	public Item isFood() {
+		this.isFood = true;
+		return this;
+	}
+	
 }

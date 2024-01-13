@@ -7,7 +7,8 @@ public class addItems {
 	Item bread;
 	addItems(){
 		bread = new Item();
-		bread.assignTexture("/betterBread.png");
+		
+		bread.canUse().assignTexture("/betterBread.png").isFood();
 		
 		
 		

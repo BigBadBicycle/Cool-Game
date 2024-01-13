@@ -15,7 +15,7 @@ public class Itemslots extends JPanel{
 	Image image;
 	addItems item;
 	public Itemslots(){
-		item = new addItems();
+		
 	
 	}
 	

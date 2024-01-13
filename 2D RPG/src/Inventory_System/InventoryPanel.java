@@ -105,7 +105,7 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		}
 		
 		item = new addItems();
-		invSlots[0].image = item.bread.image;
+		
 		
 	//buttons
 		for(int j = 0; j<2; j++) {
@@ -145,7 +145,12 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		});
 		
 		this.setLayout(null);
+		this.setResizable(false);
 		this.setVisible(true);
+	}
+	
+	public void addItem(Item item, Itemslots slots) {
+		
 	}
 
 	 public void actionPerformed(ActionEvent arg0){// TODO Auto-generated method stub

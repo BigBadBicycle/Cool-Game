@@ -1,5 +1,7 @@
 package Mechanics;
 
+import Inventory_System.Item;
+
 public class Health {
 	
 	
@@ -29,7 +31,7 @@ public class Health {
     }
   }
   
-  public void Heal(boolean canHeal) {
+  public void Heal(boolean canHeal, Item item) {
 	  if(canHeal==true) {
 		  
 	  }
