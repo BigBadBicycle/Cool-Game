@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 public class Main {
   public static void main(String[] args) {
-    /*JFrame mainFrame = new JFrame();
+    JFrame mainFrame = new JFrame();
     mainFrame.setDefaultCloseOperation(3);
     Menu background = new Menu();
     mainFrame.add(background);
@@ -17,14 +17,9 @@ public class Main {
     mainFrame.setLocationRelativeTo((Component)null);
     mainFrame.setLayout((LayoutManager)null);
     mainFrame.setResizable(false);
-    mainFrame.setVisible(true); */
+    mainFrame.setVisible(true); 
     
-   new InventoryPanel();
-   
-   //To do List=
-   //make working Hunger and Health system
-   //Get the action button to work with items
-   //make the Inventory function (By adding items)
+  // new InventoryPanel();
     
      
   }

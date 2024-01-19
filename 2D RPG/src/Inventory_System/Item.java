@@ -8,11 +8,11 @@ public class Item {
 	Image image;
 	int size = 10;
 	boolean canUse;
-	boolean isFood;
+	
 
 	public Item assignTexture(String path) {
-		 this.image = new ImageIcon(this.getClass().getResource(path)).getImage();
-		 return this;
+		this.image = new ImageIcon(this.getClass().getResource(path)).getImage();
+		return this;
 	}
 	
 	public Item canUse() {
@@ -20,9 +20,6 @@ public class Item {
 		return this;
 	}
 	
-	public Item isFood() {
-		this.isFood = true;
-		return this;
-	}
-	
+	public Image getImage() { return this.image;	}
+
 }

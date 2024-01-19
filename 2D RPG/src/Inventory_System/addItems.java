@@ -4,11 +4,16 @@ import java.awt.Image;
 
 public class addItems {
 	
-	Item bread;
-	addItems(){
+	public Item bread;
+	public Item apple;
+	public addItems(){
+		
+		apple = new Item();
 		bread = new Item();
 		
-		bread.canUse().assignTexture("/betterBread.png").isFood();
+		bread = bread.canUse().assignTexture("/betterBread.png");
+		apple = apple.canUse().assignTexture("/apple.png");
+		
 		
 		
 		

@@ -8,11 +8,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Main.InventoryProjectorClass;
+
 public class InventoryPanel extends JFrame implements ActionListener{
 	
 	JButton[] invButtons;
 	JButton next;
 	JButton back;
+	JButton equip;
+	
+	InventoryProjectorClass invProjector;
 	
 	int page = 0;
 	addItems item;
@@ -46,7 +51,6 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	Itemslots slot23;
 	Itemslots slot24;
 	
-	@SuppressWarnings("deprecation")
 	public InventoryPanel(){
 		
 		
@@ -85,13 +89,15 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		
 	//Buttons
 		
-		invButtons = new JButton[2];
+		invButtons = new JButton[3];
 		
 		next = new JButton("Next");
 		back = new JButton("Back");
+		equip = new JButton("Equip");
 	
 		invButtons[0] = next;
 		invButtons[1] = back;
+		invButtons[2] = equip;
 		
 	//for loops
 		
@@ -105,18 +111,20 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		}
 		
 		item = new addItems();
-		
+		invSlots[0].image = item.bread.image;
+		invSlots[1].image = item.apple.image;
 		
 	//buttons
-		for(int j = 0; j<2; j++) {
+		for(int j = 0; j<3; j++) {
 			invButtons[j].setFocusable(false);
-			invButtons[j].setSize(50,50);
-			invButtons[j].setFont(new Font("Roboto", Font.PLAIN, 7));
+			invButtons[j].setSize(75,50);
+			invButtons[j].setFont(new Font("Roboto", Font.PLAIN, 8));
 			this.add(invButtons[j]);
 		}
 		
 		invButtons[0].setBounds(250,152,invButtons[0].getWidth(), invButtons[0].getHeight());
-		invButtons[1].setBounds(90,152,invButtons[1].getWidth(), invButtons[1].getHeight());
+		invButtons[1].setBounds(65,152,invButtons[1].getWidth(), invButtons[1].getHeight());
+		invButtons[2].setBounds(invSlots[0].getX()+12,70,invButtons[1].getWidth(), invButtons[1].getHeight());
 		
 	//Button Functions that make them work or whatever
 		invButtons[0].addActionListener(e ->{
@@ -144,12 +152,16 @@ public class InventoryPanel extends JFrame implements ActionListener{
 				}
 		});
 		
+		invButtons[2].addActionListener(e -> {
+			if(invSlots[page].image==null) {
+				System.out.println("There is nothing in this slot, Silly!");
+			} else {
+			 invProjector.setImage(invSlots[page].image);
+			}
+		});
+		
 		this.setLayout(null);
-		this.setResizable(false);
 		this.setVisible(true);
-	}
-	
-	public void addItem(Item item, Itemslots slots) {
 		
 	}
 

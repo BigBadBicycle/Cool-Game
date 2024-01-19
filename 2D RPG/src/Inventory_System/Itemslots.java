@@ -15,7 +15,8 @@ public class Itemslots extends JPanel{
 	Image image;
 	addItems item;
 	public Itemslots(){
-		
+		item = new addItems();
+		isFilled();
 	
 	}
 	
@@ -26,10 +27,11 @@ public class Itemslots extends JPanel{
 		  
 	}
 	
-	public void collectItem() {
-		if(isFilled==true) {
+	private void isFilled() {
+		if(image == null) {
+			isFilled = false;
 		} else {
-			
+			isFilled = true;
 		}
 	}
 	
