@@ -7,21 +7,24 @@ import java.awt.Image;
 
 import javax.swing.*;
 
+import Inventory_System.InventoryPanel;
 import Inventory_System.addItems;
 
 
 public class InventoryProjectorClass extends JPanel{
 
-	 Image image;
+	 public Image image;
 	 addItems item;
 	 
-	 InventoryProjectorClass(){
+	 public InventoryProjectorClass(){
 		 item = new addItems();
+		 
+		 
 		
 		 if(image != null){
 		 System.out.println(image.getHeight(null));
 		 System.out.println(image.getWidth(null));
-		 } else { }
+		 } else { System.out.println("image is null");}
 		 
 	  this.setPreferredSize(new Dimension(100,80 ));
 	 }
@@ -30,10 +33,11 @@ public class InventoryProjectorClass extends JPanel{
 	  
 	  Graphics2D g2D = (Graphics2D) g;
 	  
-	  g2D.drawImage(image, 0, 0, null);
+	 g2D.drawImage(image, 0, 0, null);
 	 }
-	  public void setImage(Image fakeImage) {
-		 image = fakeImage;
+	  public Image setImage(Image fakeImage) {
+		 this.image = fakeImage;
 		 this.update(getGraphics());
+		return this.image;
 	 }
 }

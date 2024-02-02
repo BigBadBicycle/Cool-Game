@@ -2,6 +2,7 @@ package Inventory_System;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,8 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	JButton next;
 	JButton back;
 	JButton equip;
+	
+	Image testImage;
 	
 	InventoryProjectorClass invProjector;
 	
@@ -156,7 +159,11 @@ public class InventoryPanel extends JFrame implements ActionListener{
 			if(invSlots[page].image==null) {
 				System.out.println("There is nothing in this slot, Silly!");
 			} else {
-			 invProjector.setImage(invSlots[page].image);
+				try {
+			invProjector.image = invSlots[page].image;
+				} catch (Exception e1) {
+					System.out.println("InventoryPanel.invButtons[2] failed to execute");
+				}
 			}
 		});
 		
