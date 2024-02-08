@@ -1,4 +1,4 @@
-package Main;
+package Inventory_System;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -6,9 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 
 import javax.swing.*;
-
-import Inventory_System.InventoryPanel;
-import Inventory_System.addItems;
 
 
 public class InventoryProjectorClass extends JPanel{
@@ -18,7 +15,7 @@ public class InventoryProjectorClass extends JPanel{
 	 
 	 public InventoryProjectorClass(){
 		 item = new addItems();
-		 
+		
 		 
 		
 		 if(image != null){
@@ -32,12 +29,10 @@ public class InventoryProjectorClass extends JPanel{
 	 public void paint(Graphics g) {
 	  
 	  Graphics2D g2D = (Graphics2D) g;
-	  
 	 g2D.drawImage(image, 0, 0, null);
 	 }
-	  public Image setImage(Image fakeImage) {
+	  public void setImage(Image fakeImage) {
 		 this.image = fakeImage;
 		 this.update(getGraphics());
-		return this.image;
 	 }
 }

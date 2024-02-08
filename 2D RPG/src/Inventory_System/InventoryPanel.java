@@ -9,8 +9,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import Main.InventoryProjectorClass;
-
 public class InventoryPanel extends JFrame implements ActionListener{
 	
 	JButton[] invButtons;
@@ -57,7 +55,7 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	public InventoryPanel(){
 		
 		
-		
+	//Jframe stuff
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(400,400);
@@ -102,8 +100,7 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		invButtons[1] = back;
 		invButtons[2] = equip;
 		
-	//for loops
-		
+//For Loops
 	//item slots
 		
 		for(int i = 0; i<24; i++) {
@@ -112,11 +109,12 @@ public class InventoryPanel extends JFrame implements ActionListener{
 			invSlots[i].setBackground(Color.WHITE);
 			this.add(invSlots[page]);
 		}
+	//Break in For Loops
+		//Adds Items to Slots
 		
 		item = new addItems();
-		invSlots[0].image = item.bread.image;
-		invSlots[1].image = item.apple.image;
-		
+		invSlots[0].item = item.apple;
+		//for Loops Resume
 	//buttons
 		for(int j = 0; j<3; j++) {
 			invButtons[j].setFocusable(false);
@@ -159,11 +157,12 @@ public class InventoryPanel extends JFrame implements ActionListener{
 			if(invSlots[page].image==null) {
 				System.out.println("There is nothing in this slot, Silly!");
 			} else {
-				try {
-			invProjector.image = invSlots[page].image;
-				} catch (Exception e1) {
-					System.out.println("InventoryPanel.invButtons[2] failed to execute");
-				}
+				//try {
+					System.out.println(invSlots[page].image);
+			invProjector.setImage(invSlots[page].image);
+				//} catch (Exception e1) {
+				//	System.out.println("InventoryPanel.invButtons[2] failed to execute. Error is = "+e1);
+			//	}
 			}
 		});
 		

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Inventory_System.InventoryPanel;
+import Inventory_System.InventoryProjectorClass;
 
 public class Panel extends JPanel implements Runnable, ActionListener {
 	
@@ -49,9 +50,8 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   Thread gameLoop;
   
   public Panel() {
+	  //Adds classes
     Health HClass = new Health();
-    
-    //images
 
     //panels
     title_panel = new JPanel();
@@ -74,6 +74,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     story.setBackground(new Color(138, 90, 73));
     story.setLayout(new FlowLayout());
     story.setBounds(title_panel.getX()-150,title_panel.getY()+title_panel.getHeight()+25,600,125 );
+    
     //adds text to story panel
     storyText.setLineWrap(true);
     storyText.setBackground(new Color(138, 90, 73));
@@ -111,7 +112,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     labels[1] = this.hungerLabel;
     labels[2] = this.title;
     
-    //button
+    //buttons
     panelButtons = new JButton[6];
     
     doAction = new JButton("Action");
@@ -121,6 +122,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     option3 = new JButton(opt3Text);
     option4 = new JButton(opt4Text);
     
+    //adds the button array
     panelButtons[0] = doAction;
     panelButtons[1] = option1;
     panelButtons[2] = option2;
@@ -143,6 +145,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
       this.add(labels[j]);
       } 
     
+    //specific arrangement of labels
    
     this.labels[0].setBounds(this.bars[0].getX() - 80, this.bars[0].getY() - 38, this.labels[2].getWidth(), this.labels[2].getHeight());
     this.labels[1].setBounds(this.bars[1].getX() - 80, this.bars[1].getY() - 38, this.labels[2].getWidth(), this.labels[2].getHeight());
@@ -198,6 +201,8 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   private void update() {
 	  
   }
+  
+  //Button Function
   
   public void actionPerformed(ActionEvent e) {
 	  if(e.getSource()==inventoryB) {
