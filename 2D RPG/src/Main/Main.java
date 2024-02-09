@@ -19,12 +19,16 @@ public class Main {
     mainFrame.setResizable(false);
     mainFrame.setVisible(true); 
     
+<<<<<<< HEAD
    //new InventoryPanel();
    
    //To do List=
    //make working Hunger and Health system
    //Get the action button to work with items
    //make the Inventory function (By adding items)
+=======
+  // new InventoryPanel();
+>>>>>>> branch 'master' of https://github.com/BigBadBicycle/Cool-Game.git
     
      
   }

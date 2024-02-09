@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Inventory_System.InventoryPanel;
+import Inventory_System.InventoryProjectorClass;
 
 public class Panel extends JPanel implements Runnable, ActionListener {
 	
@@ -49,10 +50,17 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   Thread gameLoop;
   
   public Panel() {
+<<<<<<< HEAD
 	  //start of panel
+=======
+	  //Adds classes
+>>>>>>> branch 'master' of https://github.com/BigBadBicycle/Cool-Game.git
     Health HClass = new Health();
+<<<<<<< HEAD
     
     //Graphical
+=======
+>>>>>>> branch 'master' of https://github.com/BigBadBicycle/Cool-Game.git
 
     //panels
     title_panel = new JPanel();
@@ -128,6 +136,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     option3 = new JButton(opt3Text);
     option4 = new JButton(opt4Text);
     
+    //adds the button array
     panelButtons[0] = doAction;
     panelButtons[1] = option1;
     panelButtons[2] = option2;
@@ -150,6 +159,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
       this.add(labels[j]);
       } 
     
+    //specific arrangement of labels
    
     this.labels[0].setBounds(this.bars[0].getX() - 80, this.bars[0].getY() - 38, this.labels[2].getWidth(), this.labels[2].getHeight());
     this.labels[1].setBounds(this.bars[1].getX() - 80, this.bars[1].getY() - 38, this.labels[2].getWidth(), this.labels[2].getHeight());
@@ -217,6 +227,8 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   private void update() {
 	  
   }
+  
+  //Button Function
   
   public void actionPerformed(ActionEvent e) {
 	  if(e.getSource()==inventoryB) {

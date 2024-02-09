@@ -2,6 +2,7 @@ package Inventory_System;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,11 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	JButton[] invButtons;
 	JButton next;
 	JButton back;
+	JButton equip;
+	
+	Image testImage;
+	
+	InventoryProjectorClass invProjector;
 	
 	int page = 0;
 	addItems item;
@@ -46,11 +52,10 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	Itemslots slot23;
 	Itemslots slot24;
 	
-	@SuppressWarnings("deprecation")
 	public InventoryPanel(){
 		
 		
-		
+	//Jframe stuff
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(400,400);
@@ -85,16 +90,17 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		
 	//Buttons
 		
-		invButtons = new JButton[2];
+		invButtons = new JButton[3];
 		
 		next = new JButton("Next");
 		back = new JButton("Back");
+		equip = new JButton("Equip");
 	
 		invButtons[0] = next;
 		invButtons[1] = back;
+		invButtons[2] = equip;
 		
-	//for loops
-		
+//For Loops
 	//item slots
 		
 		for(int i = 0; i<24; i++) {
@@ -103,20 +109,23 @@ public class InventoryPanel extends JFrame implements ActionListener{
 			invSlots[i].setBackground(Color.WHITE);
 			this.add(invSlots[page]);
 		}
+	//Break in For Loops
+		//Adds Items to Slots
 		
 		item = new addItems();
-		
-		
+		invSlots[0].item = item.apple;
+		//for Loops Resume
 	//buttons
-		for(int j = 0; j<2; j++) {
+		for(int j = 0; j<3; j++) {
 			invButtons[j].setFocusable(false);
-			invButtons[j].setSize(50,50);
-			invButtons[j].setFont(new Font("Roboto", Font.PLAIN, 7));
+			invButtons[j].setSize(75,50);
+			invButtons[j].setFont(new Font("Roboto", Font.PLAIN, 8));
 			this.add(invButtons[j]);
 		}
 		
 		invButtons[0].setBounds(250,152,invButtons[0].getWidth(), invButtons[0].getHeight());
-		invButtons[1].setBounds(90,152,invButtons[1].getWidth(), invButtons[1].getHeight());
+		invButtons[1].setBounds(65,152,invButtons[1].getWidth(), invButtons[1].getHeight());
+		invButtons[2].setBounds(invSlots[0].getX()+12,70,invButtons[1].getWidth(), invButtons[1].getHeight());
 		
 	//Button Functions that make them work or whatever
 		invButtons[0].addActionListener(e ->{
@@ -144,12 +153,21 @@ public class InventoryPanel extends JFrame implements ActionListener{
 				}
 		});
 		
+		invButtons[2].addActionListener(e -> {
+			if(invSlots[page].image==null) {
+				System.out.println("There is nothing in this slot, Silly!");
+			} else {
+				//try {
+					System.out.println(invSlots[page].image);
+			invProjector.setImage(invSlots[page].image);
+				//} catch (Exception e1) {
+				//	System.out.println("InventoryPanel.invButtons[2] failed to execute. Error is = "+e1);
+			//	}
+			}
+		});
+		
 		this.setLayout(null);
-		this.setResizable(false);
 		this.setVisible(true);
-	}
-	
-	public void addItem(Item item, Itemslots slots) {
 		
 	}
 
