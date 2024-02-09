@@ -12,12 +12,15 @@ public class InventoryProjectorClass extends JPanel{
 
 	 public Image image;
 	 addItems item;
+	 Item item2;
 	 
 	 public InventoryProjectorClass(){
 		 item = new addItems();
-		
+		 this.item2 = item.apple;
 		 
 		
+		 
+		//checks if the image is null
 		 if(image != null){
 		 System.out.println(image.getHeight(null));
 		 System.out.println(image.getWidth(null));
@@ -31,6 +34,7 @@ public class InventoryProjectorClass extends JPanel{
 	  Graphics2D g2D = (Graphics2D) g;
 	 g2D.drawImage(image, 0, 0, null);
 	 }
+	 //method to send the image in the Inventory projector class; Good for equping items 
 	  public void setImage(Image fakeImage) {
 		 this.image = fakeImage;
 		 this.update(getGraphics());

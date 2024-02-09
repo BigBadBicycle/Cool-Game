@@ -16,8 +16,6 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	JButton back;
 	JButton equip;
 	
-	Image testImage;
-	
 	InventoryProjectorClass invProjector;
 	
 	int page = 0;
@@ -102,19 +100,32 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		
 //For Loops
 	//item slots
-		
+		invSlots[0] = new Itemslots();
+		invSlots[0].setBounds(200-55,200-60,100,80);
+		invSlots[0].setBackground(Color.WHITE);
+		this.add(invSlots[0]);
+		//REMEMBER TO FIX THE FOR LOOP LATER
+		/*
 		for(int i = 0; i<24; i++) {
 			invSlots[i] = new Itemslots();
 			invSlots[i].setBounds(200-55,200-60,100,80);
 			invSlots[i].setBackground(Color.WHITE);
 			this.add(invSlots[page]);
-		}
+			
+		}*/
+		
 	//Break in For Loops
+		
+		
 		//Adds Items to Slots
 		
 		item = new addItems();
-		invSlots[0].item = item.apple;
+		
+		
+		
 		//for Loops Resume
+		
+		
 	//buttons
 		for(int j = 0; j<3; j++) {
 			invButtons[j].setFocusable(false);
