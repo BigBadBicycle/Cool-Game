@@ -7,16 +7,17 @@ import java.awt.Image;
 
 import javax.swing.*;
 
+import Inventory_System.addItems;
+
 
 public class InventoryProjectorClass extends JPanel{
 
 	 Image image;
+	 addItems item;
 	 
 	 InventoryProjectorClass(){
-	  
-		 image = new ImageIcon(this.getClass().getResource("/betterBread.png")).getImage();
-		 System.out.println(image.getHeight(null));
-		 System.out.println(image.getWidth(null));
+		 item = new addItems();
+		 image = item.bread.image;
 		 
 	  this.setPreferredSize(new Dimension(100,80 ));
 	 }

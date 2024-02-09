@@ -49,9 +49,10 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   Thread gameLoop;
   
   public Panel() {
+	  //start of panel
     Health HClass = new Health();
     
-    //images
+    //Graphical
 
     //panels
     title_panel = new JPanel();
@@ -74,6 +75,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     story.setBackground(new Color(138, 90, 73));
     story.setLayout(new FlowLayout());
     story.setBounds(title_panel.getX()-150,title_panel.getY()+title_panel.getHeight()+25,600,125 );
+    
     //adds text to story panel
     storyText.setLineWrap(true);
     storyText.setBackground(new Color(138, 90, 73));
@@ -86,13 +88,18 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     story.add(storyText);
     
+    //End of Panels
+    
+    //Health Related Area
+    hp = HClass.HP;
+    
     
     //bars
     health = new JProgressBar();
     hunger = new JProgressBar();
     bars[0] = this.health;
     bars[1] = this.hunger;
-    bars[0].setValue(HClass.HP.intValue());
+    bars[0].setValue(hp);
     bars[0].setBounds(200, 540, 300, 25);
     bars[0].setForeground(new Color(49, 232, 110));
     bars[0].setBackground(new Color(201, 32, 6));
@@ -111,7 +118,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     labels[1] = this.hungerLabel;
     labels[2] = this.title;
     
-    //button
+    //buttons
     panelButtons = new JButton[6];
     
     doAction = new JButton("Action");
@@ -134,7 +141,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     this.add(story);
     this.add(itemDisplay);
     
-    //for Labels
+    //adds Labels
     for (int j = 0; j < 3; j++) {
       this.labels[j].setSize(100, 100);
       this.labels[j].setForeground(Color.white);
@@ -151,13 +158,19 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     this.remove(labels[2]);
     title_panel.add(labels[2]);
     
-    //for bars
+    //adds bars
     for (int i = 0; i < 2; i++) {
       this.bars[i].setStringPainted(true);
       add(this.bars[i]);
     } 
     
-    //for Buttons
+    //adds Buttons
+    	//panelButtons[0] : DoAction
+    	//panelButtons[1] : Option1
+    	//panelButtons[2] : Option2
+    	//panelButtons[3] : Option3
+    	//panelButtons[4] : Option4
+    	//panelButtons[5] : Inventory Button
     for (int k = 0; k < 6; k++) {
       this.panelButtons[k].setFocusable(false);
       this.panelButtons[k].setSize(50, 100);
@@ -177,6 +190,12 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     		.getHeight(),panelButtons[0].getWidth());
     panelButtons[5].setBounds(P_WIDTH-panelButtons[5].getWidth()-65,title_panel.getY(),panelButtons[5]
     		.getHeight(),panelButtons[5].getWidth());
+    
+    panelButtons[5].addActionListener(e -> { 
+    	
+    });
+    
+    // End of Adding Functions
    
      startGameLoop();
     this.setLayout((LayoutManager)null);

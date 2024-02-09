@@ -5,10 +5,10 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Item {
-	Image image;
-	int size = 10;
-	boolean canUse;
-	boolean isFood;
+	public Image image;
+	public int size = 10;
+	public boolean canUse;
+	 public boolean isFood;
 
 	public Item assignTexture(String path) {
 		 this.image = new ImageIcon(this.getClass().getResource(path)).getImage();

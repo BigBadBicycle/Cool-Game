@@ -4,8 +4,8 @@ import java.awt.Image;
 
 public class addItems {
 	
-	Item bread;
-	addItems(){
+	public Item bread;
+	public addItems(){
 		bread = new Item();
 		
 		bread.canUse().assignTexture("/betterBread.png").isFood();
