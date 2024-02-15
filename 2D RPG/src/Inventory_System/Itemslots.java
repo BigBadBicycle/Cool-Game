@@ -14,31 +14,43 @@ import Inventory_System.Item.*;
 public class Itemslots extends JPanel{
 	boolean isFilled;
 	Image image;
-	addItems item;
-	public Itemslots(){
-		item = new addItems();
-		
-		if(item == null) {
-			System.out.println("Item is null");
-		} else {
-			System.out.println("Item is good");
-		}
+	Item item;
 	
+	public Itemslots(){
+		
+
 	}
 	
+	//draws the item
 	public void paint(Graphics g) {
 		Graphics2D g2D = (Graphics2D) g;
 		
 		  g2D.drawImage(image, 0, 0, null);
 		  
 	}
-	//checks if the item slot is filled with an item
-	private void isFilled(Image image) {
-		if(image == null) {
-			isFilled = false;
+	
+	//checks if Item is null
+	public void checkItem() {
+		if(this.item == null) {
+			System.out.println("Item is null");
 		} else {
-			isFilled = true;
+			System.out.println("Item is not null");
 		}
 	}
+	
+	//adds item to slot
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	
+	//updates the item slot with the image
+	public void updateSlot() {
+		image = item.image;
+		if(image ==null) {System.out.println("slot image is null"); }
+		
+	}
+	
+	
+	
 	
 }

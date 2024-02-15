@@ -11,20 +11,10 @@ import javax.swing.*;
 public class InventoryProjectorClass extends JPanel{
 
 	 public Image image;
-	 addItems item;
-	 Item item2;
+	 Item item;
 	 
 	 public InventoryProjectorClass(){
-		 item = new addItems();
-		 this.item2 = item.apple;
 		 
-		
-		 
-		//checks if the image is null
-		 if(image != null){
-		 System.out.println(image.getHeight(null));
-		 System.out.println(image.getWidth(null));
-		 } else { System.out.println("image is null");}
 		 
 	  this.setPreferredSize(new Dimension(100,80 ));
 	 }
@@ -34,9 +24,23 @@ public class InventoryProjectorClass extends JPanel{
 	  Graphics2D g2D = (Graphics2D) g;
 	 g2D.drawImage(image, 0, 0, null);
 	 }
-	 //method to send the image in the Inventory projector class; Good for equping items 
-	  public void setImage(Image fakeImage) {
-		 this.image = fakeImage;
-		 this.update(getGraphics());
+	 
+	 
+	 public void setInvProjItem(Item item) {
+		 this.item = item;
 	 }
+	 
+	 protected void checkItem() {
+		 if(this.item==null) {
+			 System.out.println("Item is not registered");
+		 } else {
+			 System.out.println("Item is good in invprojector!");
+		 }
+	 }
+	 
+	 protected void setImage() {
+		 this.image = this.item.image;
+		 this.paint(getGraphics());
+	 }
+	  
 }

@@ -5,6 +5,7 @@ import java.awt.Image;
 public class addItems {
 	
 	public Item bread;
+	public Item[] allItems;
 	public Item apple;
 	public addItems(){
 		
@@ -15,6 +16,11 @@ public class addItems {
 		//can give the properties of that item
 		bread = bread.canUse().assignTexture("/betterBread.png");
 		apple = apple.canUse().assignTexture("/apple.png");
+		
+		// adds items into an array (subject to change)
+		allItems = new Item[2];
+		allItems[0] = apple;
+		allItems[1] = bread;
 		
 		
 		

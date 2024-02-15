@@ -52,6 +52,8 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	
 	public InventoryPanel(){
 		
+		invProjector = new InventoryProjectorClass();
+		
 		
 	//Jframe stuff
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -100,27 +102,30 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		
 //For Loops
 	//item slots
+		
 		invSlots[0] = new Itemslots();
 		invSlots[0].setBounds(200-55,200-60,100,80);
 		invSlots[0].setBackground(Color.WHITE);
 		this.add(invSlots[0]);
-		//REMEMBER TO FIX THE FOR LOOP LATER
-		/*
+		
+		
 		for(int i = 0; i<24; i++) {
 			invSlots[i] = new Itemslots();
 			invSlots[i].setBounds(200-55,200-60,100,80);
 			invSlots[i].setBackground(Color.WHITE);
 			this.add(invSlots[page]);
 			
-		}*/
+		}
 		
 	//Break in For Loops
 		
 		
 		//Adds Items to Slots
-		
+		System.out.println("Putting Items in Slots");
 		item = new addItems();
 		
+		this.addItem(invSlots[0], item.apple);
+		this.addItem(invSlots[1], item.bread);
 		
 		
 		//for Loops Resume
@@ -141,6 +146,8 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	//Button Functions that make them work or whatever
 		invButtons[0].addActionListener(e ->{
 			
+		//Next
+		//goes to the next page in the inventory
 		if(page>=23) {
 			invButtons[0].disable();
 		} else {
@@ -152,6 +159,8 @@ public class InventoryPanel extends JFrame implements ActionListener{
 			}
 		});
 		
+		//Back
+		//goes to the previous page in the inventory
 		invButtons[1].addActionListener(e ->{
 			if(page==0) {
 				invButtons[1].disable();
@@ -164,16 +173,15 @@ public class InventoryPanel extends JFrame implements ActionListener{
 				}
 		});
 		
+		//EQUIP
+		//equips the Item into the Inventory Projector		
 		invButtons[2].addActionListener(e -> {
-			if(invSlots[page].image==null) {
+			if(invSlots[page].item==null) {
 				System.out.println("There is nothing in this slot, Silly!");
 			} else {
-				//try {
-					System.out.println(invSlots[page].image);
-			invProjector.setImage(invSlots[page].image);
-				//} catch (Exception e1) {
-				//	System.out.println("InventoryPanel.invButtons[2] failed to execute. Error is = "+e1);
-			//	}
+			invProjector.setInvProjItem(invSlots[0].item);
+			invProjector.checkItem();
+			invProjector.setImage();
 			}
 		});
 		
@@ -182,7 +190,15 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		
 	}
 
+	//adds readable actions by the user
 	 public void actionPerformed(ActionEvent arg0){// TODO Auto-generated method stub
 	}
+	 
+	 //simpler way of adding an item to a item slot
+	 private void addItem(Itemslots slots, Item item){
+		 slots.setItem(item);
+		 slots.updateSlot();
+		 
+	 }
 	
 }
