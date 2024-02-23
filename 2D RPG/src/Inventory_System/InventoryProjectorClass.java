@@ -12,24 +12,29 @@ public class InventoryProjectorClass extends JPanel{
 
 	 public Image image;
 	 Item item;
+	
 	 
 	 public InventoryProjectorClass(){
-		 
-		 
-	  this.setPreferredSize(new Dimension(100,80 ));
+		
+		 //sets size
+	  this.setPreferredSize(new Dimension(80,100 ));
+	 
 	 }
 	 
+	 //draws the image in the main panel
 	 public void paint(Graphics g) {
 	  
 	  Graphics2D g2D = (Graphics2D) g;
 	 g2D.drawImage(image, 0, 0, null);
+	 	
 	 }
 	 
-	 
+	 //sets the item of the InvProjector
 	 public void setInvProjItem(Item item) {
 		 this.item = item;
 	 }
 	 
+	 //Checks if Item is null 
 	 protected void checkItem() {
 		 if(this.item==null) {
 			 System.out.println("Item is not registered");
@@ -38,9 +43,13 @@ public class InventoryProjectorClass extends JPanel{
 		 }
 	 }
 	 
-	 protected void setImage() {
-		 this.image = this.item.image;
-		 this.paint(getGraphics());
+	 //sets the item's image as the InvProjector Image
+	 public void setImage() {
+		 image = item.image;
+		
+		 System.out.println("Image is set");
+		 
+		
 	 }
 	  
 }
