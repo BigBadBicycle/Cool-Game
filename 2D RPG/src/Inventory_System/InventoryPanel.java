@@ -50,6 +50,8 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	Itemslots slot23;
 	Itemslots slot24;
 	
+	public boolean ifEquiped = false;
+	
 	public InventoryPanel(){
 		
 		invProjector = new InventoryProjectorClass();
@@ -177,11 +179,9 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		//equips the Item into the Inventory Projector		
 		invButtons[2].addActionListener(e -> {
 			if(invSlots[page].item==null) {
-				System.out.println("There is nothing in this slot, Silly!");
+				System.out.println("there is nothing there Silly!");
 			} else {
-			invProjector.setInvProjItem(invSlots[0].item);
-			invProjector.checkItem();
-			invProjector.setImage();
+				ifEquiped = true;
 			}
 		});
 		
@@ -200,5 +200,10 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		 slots.updateSlot();
 		 
 	 }
+	 
+	public void updateInvProjector() {
+		invProjector.setInvProjItem(invSlots[page].item);
+		invProjector.setImage();
+	}
 	
 }

@@ -46,6 +46,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   JPanel optionButtons;
   JPanel story;
   InventoryProjectorClass itemDisplay;
+  InventoryPanel inventory;
   
   Thread gameLoop;
   
@@ -182,36 +183,38 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     		.getHeight(),panelButtons[5].getWidth());
    
      startGameLoop();
+     
     this.setLayout((LayoutManager)null);
   }
   
   public void startGameLoop() {
-    this.gameLoop = new Thread(this);
+    gameLoop = new Thread(this);
   }
   
   public void run() {
     while (this.gameLoop != null) {
     	System.out.println("Gameloop is running");
-      update();
       repaint();
       
     } 
-  }
-  
-  private void update() {
-	  
   }
   
   //Button Function
   
   public void actionPerformed(ActionEvent e) {
 	  if(e.getSource()==inventoryB) {
-			new InventoryPanel();
+			inventory = new InventoryPanel();
 		}
+	  if(e.getSource()==doAction) {
+		  inventory.updateInvProjector();
+	  }
+  }
+  
+
   }
   			
 
   
 
-	}
+
 	
