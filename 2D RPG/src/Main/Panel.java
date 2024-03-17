@@ -7,7 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Inventory_System.InventoryPanel;
-import Inventory_System.InventoryProjectorClass;
+import Inventory_System.Item;
+import Inventory_System.addItems;
 
 public class Panel extends JPanel implements Runnable, ActionListener {
 	
@@ -29,6 +30,8 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   JButton option4;
   JButton inventoryB;
   
+ InventoryProjectorClass itemDisplay;
+  
   JProgressBar[] bars = new JProgressBar[2];
   JProgressBar health;
   JProgressBar hunger;
@@ -45,7 +48,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   JPanel title_panel;
   JPanel optionButtons;
   JPanel story;
-  InventoryProjectorClass itemDisplay;
+  
   InventoryPanel inventory;
   
   Thread gameLoop;
@@ -61,6 +64,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     
     this.setPreferredSize(new Dimension(P_WIDTH, P_HEIGHT));
     this.setBackground(Color.black);
+    
     
     itemDisplay = new InventoryProjectorClass();
     itemDisplay.setBackground(new Color(241, 245, 132));
@@ -204,11 +208,19 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   public void actionPerformed(ActionEvent e) {
 	  if(e.getSource()==inventoryB) {
 			inventory = new InventoryPanel();
-		}
+			inventory.setInvProj(this.itemDisplay);
+	  }
+		
 	  if(e.getSource()==doAction) {
-		  inventory.updateInvProjector();
+		  
 	  }
   }
+  
+  public void setImagetoHand(Item item) {
+	  itemDisplay.setItem(item);
+	  itemDisplay.setImage();
+  }
+  
   
 
   }

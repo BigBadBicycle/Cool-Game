@@ -9,6 +9,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Main.InvProjectorInterface;
+import Main.InventoryProjectorClass;
+import Main.Panel;
+import Main.transferclass;
+
 public class InventoryPanel extends JFrame implements ActionListener{
 	
 	JButton[] invButtons;
@@ -16,10 +21,10 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	JButton back;
 	JButton equip;
 	
-	InventoryProjectorClass invProjector;
-	
 	int page = 0;
 	addItems item;
+	
+	InventoryProjectorClass invProj;
 	
 	JLabel slotNumber;
 	
@@ -52,16 +57,14 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	
 	public boolean ifEquiped = false;
 	
-	public InventoryPanel(){
-		
-		invProjector = new InventoryProjectorClass();
-		
+	public InventoryPanel(){	
 		
 	//Jframe stuff
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(400,400);
 		this.getContentPane().setBackground(Color.BLACK);
+		
 		
 	//slots
 		invSlots = new Itemslots[24];
@@ -181,7 +184,8 @@ public class InventoryPanel extends JFrame implements ActionListener{
 			if(invSlots[page].item==null) {
 				System.out.println("there is nothing there Silly!");
 			} else {
-				ifEquiped = true;
+				invProj.setItem(invSlots[page].item);
+				invProj.setImage();
 			}
 		});
 		
@@ -201,9 +205,9 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		 
 	 }
 	 
-	public void updateInvProjector() {
-		invProjector.setInvProjItem(invSlots[page].item);
-		invProjector.setImage();
-	}
+	 public void setInvProj(InventoryProjectorClass projector) {
+		this.invProj = projector;
+	 }
+	 
 	
 }

@@ -1,25 +1,26 @@
-package Inventory_System;
+package Main;
 
 import java.awt.Dimension;
+import Inventory_System.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
-
 import javax.swing.*;
+
+import Main.InventoryProjectorClass;
 
 
 public class InventoryProjectorClass extends JPanel{
 
 	 public Image image;
-	 Item item;
-	 addItems test;
+	 public Item item;
 	
 	 
 	 public InventoryProjectorClass(){
 		 //sets size
 	  this.setPreferredSize(new Dimension(80,100 ));
-	  test = new addItems();
+	 
 	 }
 	 
 	 //draws the image in the main panel
@@ -31,27 +32,18 @@ public class InventoryProjectorClass extends JPanel{
 		}
 	 
 	 //sets the item of the InvProjector
-	 public void setInvProjItem(Item item) {
+	 public void setItem(Item item) {
 		 this.item = item;
-	 }
-	 
-	 //Checks if Item is null 
-	 protected void checkItem() {
-		 if(this.item==null) {
-			 System.out.println("Item is not registered");
-		 } else {
-			 System.out.println("Item is good in invprojector!");
-		 }
 	 }
 	 
 	 //sets the item's image as the InvProjector Image
 	 public void setImage() {
-		// image = item.image;
-		 image = test.apple.getImage();
+		image = item.getImage();
 		 if(image==null) {
 			 System.out.println("inv projector image null");
 		 } else {
 			 System.out.println("Image is set");
+			 this.update(getGraphics());
 		 }
 		
 		 
