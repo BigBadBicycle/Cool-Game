@@ -8,6 +8,7 @@ import java.io.EOFException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
 import Inventory_System.Item.*;
 
 
@@ -15,10 +16,13 @@ public class Itemslots extends JPanel{
 	boolean isFilled;
 	Image image;
 	Item item;
+	Image nullImage;
 	
 	public Itemslots(){
-		
-
+		nullImage = new ImageIcon(this.getClass().getResource("/Empty.png")).getImage();
+		if(item != null) { } else {
+			image = nullImage;
+		}
 	}
 	
 	//draws the item

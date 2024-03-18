@@ -9,10 +9,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import Main.InvProjectorInterface;
 import Main.InventoryProjectorClass;
 import Main.Panel;
-import Main.transferclass;
 
 public class InventoryPanel extends JFrame implements ActionListener{
 	
@@ -27,6 +25,8 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	InventoryProjectorClass invProj;
 	
 	JLabel slotNumber;
+	JLabel itemName;
+	JLabel itemAmount;
 	
 	Itemslots[] invSlots;
 	
@@ -57,7 +57,7 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	
 	public boolean ifEquiped = false;
 	
-	public InventoryPanel(){	
+	public InventoryPanel(){
 		
 	//Jframe stuff
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -105,14 +105,17 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		invButtons[1] = back;
 		invButtons[2] = equip;
 		
+	//JLabel Stuff
+		slotNumber = new JLabel("PAGE NUMBER: "+page+"");
+		slotNumber.setBounds(147,135,200,200);
+		slotNumber.setForeground(Color.WHITE);
+		
+		itemName = new JLabel("ITEM: ");
+		itemName.setBounds(147,155,200,200);
+		itemName.setForeground(Color.WHITE);
+		
 //For Loops
 	//item slots
-		
-		invSlots[0] = new Itemslots();
-		invSlots[0].setBounds(200-55,200-60,100,80);
-		invSlots[0].setBackground(Color.WHITE);
-		this.add(invSlots[0]);
-		
 		
 		for(int i = 0; i<24; i++) {
 			invSlots[i] = new Itemslots();
@@ -134,6 +137,10 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		
 		
 		//for Loops Resume
+		
+		//JLabels
+		this.add(slotNumber);
+		this.add(itemName);
 		
 		
 	//buttons
@@ -159,7 +166,14 @@ public class InventoryPanel extends JFrame implements ActionListener{
 			this.remove(invSlots[page]);
 			page = page+1;
 			this.add(invSlots[page]);
-			System.out.println("next, Page: "+page);
+			slotNumber.setText("PAGE NUMBER: "+page+"");
+			
+			if(invSlots[page].item!=null) { 
+				itemName.setText("ITEM: "+invSlots[page].item.getName());
+				} else {
+					itemName.setText("ITEM: ");
+				}
+			
 			this.update(getGraphics());
 			}
 		});
@@ -173,7 +187,14 @@ public class InventoryPanel extends JFrame implements ActionListener{
 				this.remove(invSlots[page]);
 				page = page-1;
 				this.add(invSlots[page]);
-				System.out.println("Back, Page: "+page);
+				slotNumber.setText("PAGE NUMBER: "+page+"");
+				
+				if(invSlots[page].item!=null) { 
+				itemName.setText("ITEM: "+invSlots[page].item.getName());
+				} else {
+					itemName.setText("ITEM: ");
+				}
+				
 				this.update(getGraphics());
 				}
 		});
@@ -193,6 +214,9 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		this.setVisible(true);
 		
 	}
+	//==================
+	//		METHODS 
+	//==================
 
 	//adds readable actions by the user
 	 public void actionPerformed(ActionEvent arg0){// TODO Auto-generated method stub
@@ -204,7 +228,7 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		 slots.updateSlot();
 		 
 	 }
-	 
+	 //sets up a universal InventoryProjector
 	 public void setInvProj(InventoryProjectorClass projector) {
 		this.invProj = projector;
 	 }

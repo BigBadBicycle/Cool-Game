@@ -5,9 +5,10 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Item {
-	//properties of that item Image image;
+	//properties of that item
 	int size = 10;
 	Image image;
+	String name;
 	boolean canUse;
 	
 	//assigns of image to an item
@@ -24,5 +25,13 @@ public class Item {
 	
 	//returns the image of the given item
 	public Image getImage() { return this.image;	}
+	
+	//set the name in a string for the item
+	public Item setName(String string) {
+		this.name = string;
+		return this;
+}
+	//Returns the name of the item
+	public String getName() { return this.name; }
 
 }

@@ -14,8 +14,8 @@ public class addItems {
 		bread = new Item();
 		
 		//can give the properties of that item
-		bread = bread.canUse().assignTexture("/betterBread.png");
-		apple = apple.canUse().assignTexture("/apple.png");
+		bread = bread.canUse().assignTexture("/betterBread.png").setName("Bread");
+		apple = apple.canUse().assignTexture("/apple.png").setName("Apple");
 		
 		// adds items into an array (subject to change)
 		allItems = new Item[2];

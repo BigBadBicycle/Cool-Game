@@ -19,7 +19,11 @@ public class Main {
     mainFrame.setResizable(false);
     mainFrame.setVisible(true); 
     
-  // new InventoryPanel();
+    //STUFF TO WORK ON:
+    //-Make a more polished Item System
+    //-work on hunger & health mechanics
+    //-work on story
+    //-make more items
     
      
   }

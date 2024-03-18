@@ -68,7 +68,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     
     itemDisplay = new InventoryProjectorClass();
     itemDisplay.setBackground(new Color(241, 245, 132));
-    itemDisplay.setBounds(P_WIDTH-125,P_HEIGHT-90,80,80);
+    itemDisplay.setBounds(P_WIDTH-125,P_HEIGHT-90,100,80);
     
     optionButtons = new JPanel();
     optionButtons.setBackground(new Color(87, 85, 85));

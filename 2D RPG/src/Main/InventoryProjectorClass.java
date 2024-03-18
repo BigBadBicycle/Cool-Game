@@ -2,6 +2,7 @@ package Main;
 
 import java.awt.Dimension;
 import Inventory_System.*;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -15,11 +16,14 @@ public class InventoryProjectorClass extends JPanel{
 
 	 public Image image;
 	 public Item item;
+	 Image nullImage;
 	
 	 
 	 public InventoryProjectorClass(){
 		 //sets size
 	  this.setPreferredSize(new Dimension(80,100 ));
+	  nullImage = new ImageIcon(this.getClass().getResource("/Empty.png")).getImage();
+	  image = nullImage;
 	 
 	 }
 	 
@@ -38,11 +42,13 @@ public class InventoryProjectorClass extends JPanel{
 	 
 	 //sets the item's image as the InvProjector Image
 	 public void setImage() {
-		image = item.getImage();
-		 if(image==null) {
+		 
+		 if(this.item==null) {
 			 System.out.println("inv projector image null");
+			 image = nullImage;
 		 } else {
 			 System.out.println("Image is set");
+			 image = item.getImage();
 			 this.update(getGraphics());
 		 }
 		
