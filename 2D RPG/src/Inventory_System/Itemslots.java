@@ -9,7 +9,8 @@ import java.io.EOFException;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import Inventory_System.Item.*;
+import Inventory_System.Items.Item;
+import Inventory_System.Items.Item.*;
 
 
 public class Itemslots extends JPanel{
@@ -49,7 +50,7 @@ public class Itemslots extends JPanel{
 	
 	//updates the item slot with the image
 	public void updateSlot() {
-		image = item.image;
+		image = item.getImage();
 		if(image ==null) {System.out.println("slot image is null"); }
 		
 	}

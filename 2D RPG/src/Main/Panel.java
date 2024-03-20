@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Inventory_System.InventoryPanel;
-import Inventory_System.Item;
 import Inventory_System.addItems;
+import Inventory_System.Items.Item;
 
 public class Panel extends JPanel implements Runnable, ActionListener {
 	
@@ -203,7 +203,9 @@ public class Panel extends JPanel implements Runnable, ActionListener {
     } 
   }
   
-  //Button Function
+  //================
+  //Button Function|
+  //================
   
   public void actionPerformed(ActionEvent e) {
 	  if(e.getSource()==inventoryB) {
@@ -212,15 +214,24 @@ public class Panel extends JPanel implements Runnable, ActionListener {
 	  }
 		
 	  if(e.getSource()==doAction) {
-		  
+		  if(itemDisplay.item != null && itemDisplay.item.getCanUse() != false) {
+			  
+			  switch(itemDisplay.item.getCategory()) {
+			  
+			  case 'c':
+				  System.out.println("consumable!");
+				  break;
+				  
+			  case 'w':
+				  break;
+				  
+			  case 'g':
+				  break;
+				  
+			  }
+		  }
 	  }
   }
-  
-  public void setImagetoHand(Item item) {
-	  itemDisplay.setItem(item);
-	  itemDisplay.setImage();
-  }
-  
   
 
   }

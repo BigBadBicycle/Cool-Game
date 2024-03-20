@@ -2,6 +2,7 @@ package Main;
 
 import java.awt.Dimension;
 import Inventory_System.*;
+import Inventory_System.Items.Item;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;

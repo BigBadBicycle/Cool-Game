@@ -2,20 +2,34 @@ package Inventory_System;
 
 import java.awt.Image;
 
+import Inventory_System.Items.Consumables;
+import Inventory_System.Items.Item;
+
 public class addItems {
 	
-	public Item bread;
 	public Item[] allItems;
-	public Item apple;
+	
+	//============
+	//Consumables|
+	//============
+	public Consumables apple;
+	public Consumables bread;
 	public addItems(){
 		
 		//makes the item a new item
-		apple = new Item();
-		bread = new Item();
+		apple = new Consumables();
+		bread = new Consumables();
 		
-		//can give the properties of that item
-		bread = bread.canUse().assignTexture("/betterBread.png").setName("Bread");
-		apple = apple.canUse().assignTexture("/apple.png").setName("Apple");
+		//Side Note: add methods of category class first then continue with parent class methods
+		
+	//can give the properties of that item
+		
+		//Consumables
+		//===========
+		bread = (Consumables) bread /*Start of Item Methods*/ .canUse().assignTexture("/Consumables/Food/betterBread.png").setName("Bread");
+		apple = (Consumables) apple /*Start of Item Methods*/ .canUse().assignTexture("/Consumables/Food/apple.png").setName("Apple");
+		//===========
+		
 		
 		// adds items into an array (subject to change)
 		allItems = new Item[2];

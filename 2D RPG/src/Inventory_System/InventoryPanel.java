@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Inventory_System.Items.Item;
 import Main.InventoryProjectorClass;
 import Main.Panel;
 
