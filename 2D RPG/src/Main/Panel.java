@@ -1,14 +1,12 @@
 package Main;
 
-import Mechanics.Health;
+import Mechanics.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Inventory_System.InventoryPanel;
-import Inventory_System.addItems;
-import Inventory_System.Items.Item;
 
 public class Panel extends JPanel implements Runnable, ActionListener {
 	
@@ -20,7 +18,7 @@ public class Panel extends JPanel implements Runnable, ActionListener {
   String opt2Text = "Option 2";
   String opt3Text = "Option 3";
   String opt4Text = "Option 4";
-  String sText = "Hello, this is the chimney of food ";
+  String sText = "PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER";
   
   JButton[] panelButtons;
   JButton doAction;
@@ -231,7 +229,25 @@ public class Panel extends JPanel implements Runnable, ActionListener {
 			  }
 		  }
 	  }
+	  
+	  
   }
+  
+  	//Additional Methods:
+	 public void setOptionTexts(int choice, String text) {
+		 switch(choice) {
+		 case 1: opt1Text = text;
+			 break;
+		 case 2: opt2Text = text;
+			 break;
+		 case 3: opt3Text = text;
+			 break;
+		 case 4: opt4Text = text;
+			 break;
+			 
+			default: System.out.println("number option doesn't exist");
+		 }
+	  }
   
 
   }

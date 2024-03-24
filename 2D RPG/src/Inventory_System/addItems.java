@@ -26,8 +26,8 @@ public class addItems {
 		
 		//Consumables
 		//===========
-		bread = (Consumables) bread /*Start of Item Methods*/ .canUse().assignTexture("/Consumables/Food/betterBread.png").setName("Bread");
-		apple = (Consumables) apple /*Start of Item Methods*/ .canUse().assignTexture("/Consumables/Food/apple.png").setName("Apple");
+		bread =  (Consumables) bread.setFullnessValue(15) /*Start of Item Methods*/ .canUse().assignTexture("/Consumables/Food/betterBread.png").setName("Bread").setDefaultStack();
+		apple = (Consumables) apple.setFullnessValue(3) /*Start of Item Methods*/ .canUse().assignTexture("/Consumables/Food/apple.png").setName("Apple").setDefaultStack();
 		//===========
 		
 		

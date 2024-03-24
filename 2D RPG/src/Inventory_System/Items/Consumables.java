@@ -13,6 +13,7 @@ public class Consumables extends Item{
 	
 	public Consumables(){
 		super.itemCategory = 'c';
+		
 	}
 
 //METHODS:
@@ -43,5 +44,6 @@ public class Consumables extends Item{
 	public void Consume() {
 		
 	}
+	
 	
 }

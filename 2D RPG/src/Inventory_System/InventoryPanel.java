@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Inventory_System.Items.Consumables;
 import Inventory_System.Items.Item;
 import Main.InventoryProjectorClass;
 import Main.Panel;
@@ -28,6 +29,11 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	JLabel slotNumber;
 	JLabel itemName;
 	JLabel itemAmount;
+	
+	//Generic labels
+	JLabel info1;
+	JLabel info2;
+	JLabel info3;
 	
 	Itemslots[] invSlots;
 	
@@ -115,6 +121,26 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		itemName.setBounds(147,155,200,200);
 		itemName.setForeground(Color.WHITE);
 		
+		itemAmount = new JLabel("AMOUNT: ");
+		itemAmount.setBounds(147,175,200,200);
+		itemAmount.setForeground(Color.WHITE);
+		
+			//generic labels
+				info1 = new JLabel();
+				info2 = new JLabel();
+				info3 = new JLabel();
+				
+				info1.setForeground(Color.WHITE);
+				info2.setForeground(Color.WHITE);
+				info3.setForeground(Color.WHITE);
+				
+				info1.setBounds(147,195,200,200);
+				info2.setBounds(147,215,200,200);
+				info3.setBounds(147,235,200,200);
+				
+				
+				
+		
 //For Loops
 	//item slots
 		
@@ -142,6 +168,7 @@ public class InventoryPanel extends JFrame implements ActionListener{
 		//JLabels
 		this.add(slotNumber);
 		this.add(itemName);
+		this.add(itemAmount);
 		
 		
 	//buttons
@@ -169,11 +196,19 @@ public class InventoryPanel extends JFrame implements ActionListener{
 			this.add(invSlots[page]);
 			slotNumber.setText("PAGE NUMBER: "+page+"");
 			
+			//displays the item's name
 			if(invSlots[page].item!=null) { 
 				itemName.setText("ITEM: "+invSlots[page].item.getName());
 				} else {
 					itemName.setText("ITEM: ");
 				}
+			
+			//displays the item's amount:
+			if(invSlots[page].item!=null) {
+				itemAmount.setText("AMOUNT: "+invSlots[page].item.getStack());
+			} else { itemAmount.setText("AMOUNT: 0"); }
+			
+			
 			
 			this.update(getGraphics());
 			}
@@ -190,11 +225,17 @@ public class InventoryPanel extends JFrame implements ActionListener{
 				this.add(invSlots[page]);
 				slotNumber.setText("PAGE NUMBER: "+page+"");
 				
+				//displays the item's name
 				if(invSlots[page].item!=null) { 
 				itemName.setText("ITEM: "+invSlots[page].item.getName());
 				} else {
 					itemName.setText("ITEM: ");
 				}
+				
+				//displays the item's amount:
+				if(invSlots[page].item!=null) {
+					itemAmount.setText("AMOUNT: "+invSlots[page].item.getStack());
+				} else { itemAmount.setText("AMOUNT: 0"); }
 				
 				this.update(getGraphics());
 				}
@@ -233,6 +274,23 @@ public class InventoryPanel extends JFrame implements ActionListener{
 	 public void setInvProj(InventoryProjectorClass projector) {
 		this.invProj = projector;
 	 }
+	 
+	 //method to display item specific information based on its category
+	 public void displaySpecificData(Consumables consumable) {
+		 
+		 switch (Consumables.getCategory()) {
+		 	
+		 case 'c': info1.setText();
+			 break;
+			 
+		 case 'w':
+			 break;
+			 
+		 case 'g':
+			 break;
+		 }
+	 }
+	 
 	 
 	
 }
